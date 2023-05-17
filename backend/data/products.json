@@ -1,0 +1,138 @@
+[
+    {
+        "name": "Abate fetel",
+        "price": "10",
+        "description": "Green-red, large",
+        "ratings": 4.5,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Pear",
+        "seller": "SweetFruits",
+        "stock": 50,
+        "numOfReviews": 32,
+        "reviews": []
+    },
+    {
+        "name": "Ajdared",
+        "price": "8",
+        "description": "Red, medium",
+        "ratings": 4.0,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Apple",
+        "seller": "SweetFruits",
+        "stock": 70,
+        "numOfReviews": 22,
+        "reviews": []
+    },
+    {
+        "name": "Azenka",
+        "price": "9",
+        "description": "Purple, large",
+        "ratings": 4.8,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Plum",
+        "seller": "DeliciousFruits",
+        "stock": 30,
+        "numOfReviews": 42,
+        "reviews": []
+    },
+    {
+        "name": "Bergeron",
+        "price": "10",
+        "description": "Orange, medium",
+        "ratings": 4.9,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Apricot",
+        "seller": "DeliciousFruits",
+        "stock": 130,
+        "numOfReviews": 52,
+        "reviews": []
+    },
+    {
+        "name": "Breburn",
+        "price": "9",
+        "description": "Red-green, medium",
+        "ratings": 4.9,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Apple",
+        "seller": "DeliciousFruits",
+        "stock": 80,
+        "numOfReviews": 41,
+        "reviews": []
+    },
+    {
+        "name": "Budimka",
+        "price": "8",
+        "description": "Red, large",
+        "ratings": 4.7,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Apple",
+        "seller": "DeliciousFruits",
+        "stock": 40,
+        "numOfReviews": 32,
+        "reviews": []
+    },
+    {
+        "name": "Butira",
+        "price": "10",
+        "description": "Green-red, medium",
+        "ratings": 4.7,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Pear",
+        "seller": "DeliciousFruits",
+        "stock": 90,
+        "numOfReviews": 12,
+        "reviews": []
+    },
+    {
+        "name": "Cacanska rana",
+        "price": "9",
+        "description": "Purple, medium",
+        "ratings": 4.9,
+        "images": [
+            {
+                "public_id": "products/",
+                "url": "https://res.cloudinary.com/.jpg"
+            }
+        ],
+        "category": "Plum",
+        "seller": "DeliciousFruits",
+        "stock": 120,
+        "numOfReviews": 52,
+        "reviews": []
+    }
+]
