@@ -1,39 +1,37 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import MetaData from './layout/MetaData'
 
+import Product from './product/Product'
+
+import { getProducts } from '../actions/product'
+
 const Home = () => {
+
+  const dispatch = useDispatch()
+  const { loading, products } = useSelector(state => state.products)
+
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [dispatch])
+
   return (
     <Fragment>
-      {/* Add Custom Title */}
-      <MetaData title={'Buy Best Products Online'} />
+      {loading ? <h1>Loading...</h1> :
+        <Fragment>
+          <MetaData title={'Buy Best Products Online'} />
+          <h1 id="products_heading">Latest Products</h1>
 
-      <section id="products" className="container mt-5">
-        <div className="row">
-          <div className="col-sm-12 col-md-6 col-lg-3 my-3">
-            <div className="card p-3 rounded">
-              <img
-                src="https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131890/happyfruits/products/abate_fetel_fpqgzq.jpg"
-                className="card-img-top mx-auto"
-                alt="product"
-              />
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title">
-                  <a href="/#">Abate Fetel</a>
-                </h5>
-                <div className="ratings mt-auto">
-                  <div className="rating-outer">
-                    <div className="rating-inner"></div>
-                  </div>
-                  <span id="no_of_reviews">(0 Reviews)</span>
-                </div>
-                <p className="card-text">2.56€</p>
-                <a href="/#" id="view_btn" className="btn btn-block">View Details</a>
-              </div>
+          <section id="products" className="container mt-5">
+            <div className="row">
+              {products && products.map(product =>
+                <Product key={product._id} product={product} />
+              )}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </Fragment>
+      }
     </Fragment>
   )
 }

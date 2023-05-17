@@ -4,7 +4,7 @@ import catchAsyncErrs from '../middleware/catchAsyncErrs.js'
 import { APIFeatures } from '../utils/apiFeatures.js'
 
 export const getProducts = catchAsyncErrs(async (req, res, next) => {
-    const resPerPage = 4
+    const resPerPage = 8
     const productCount = await Product.countDocuments()
     const apiFeatures = new APIFeatures(Product.find(), req.query)
         .search() // /products?keyword=...

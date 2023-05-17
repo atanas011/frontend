@@ -1,0 +1,5 @@
+export const PRODUCTS_REQ = 'PRODUCTS_REQ'
+export const PRODUCTS_SUCCESS = 'PRODUCTS_SUCCESS'
+export const PRODUCTS_FAIL = 'PRODUCTS_FAIL'
+
+export const CLEAR_ERRORS = 'CLEAR_ERRORS'
