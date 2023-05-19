@@ -10,9 +10,11 @@ import MetaData from '../layout/MetaData'
 import { getProductDetails, clearErrors } from '../../actions/product'
 
 const ProductDetails = () => {
-    const { id } = useParams()
+
     const alert = useAlert()
     const dispatch = useDispatch()
+
+    const { id } = useParams()
     const { loading, product, error } = useSelector(state => state.productDetails)
 
     useEffect(() => {

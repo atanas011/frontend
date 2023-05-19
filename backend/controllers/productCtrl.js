@@ -5,20 +5,22 @@ import { APIFeatures } from '../utils/apiFeatures.js'
 
 export const getProducts = catchAsyncErrs(async (req, res, next) => {
 
-    // return next(new ErrorHandler('Error', 400))
-
-    const resPerPage = 8
+    const resPerPage = 4
     const productCount = await Product.countDocuments()
     const apiFeatures = new APIFeatures(Product.find(), req.query)
-        .search() // /products?keyword=...
-        .filter() // /products?keyword=...&category=...&price[gt]=8&price[lt]=10
-        .paginate(resPerPage) // /products?page=...
-    const products = await apiFeatures.query
+        .search()
+        .filter()
+
+    let products = await apiFeatures.query
+    let filteredProductCount = products.length
+    apiFeatures.paginate(resPerPage)
+    products = await apiFeatures.query.clone()
 
     res.status(200).json({
         success: true,
-        count: products.length,
         productCount,
+        resPerPage,
+        filteredProductCount,
         products
     })
 })

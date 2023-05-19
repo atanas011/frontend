@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Product = ({ product }) => {
+const Product = ({ product, col }) => { // col - for price range slider
 
-    const details = `product/${product._id}`
+    const details = `/product/${product._id}`
 
     return (
-        <div className="col-sm-12 col-md-6 col-lg-3 my-3">
+        <div className={`col-sm-12 col-md-6 col-lg-${col} my-3`}>
             <div className="card p-3 rounded">
                 <Link to={details}>
                     <img src={product.images[0].url} className="card-img-top mx-auto" alt={product.name} />
