@@ -1,13 +1,13 @@
 [
     {
-        "name": "Abate fetel",
+        "name": "Abate Fetel",
         "price": "10",
         "description": "Green-red, large",
         "ratings": 4.5,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/abate_fetel_fpqgzq",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131890/happyfruits/products/abate_fetel_fpqgzq.jpg"
             }
         ],
         "category": "Pear",
@@ -23,8 +23,8 @@
         "ratings": 4.0,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/ajdared_xvdns4",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131890/happyfruits/products/ajdared_xvdns4.jpg"
             }
         ],
         "category": "Apple",
@@ -40,8 +40,8 @@
         "ratings": 4.8,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/azenka_rasmxe",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131890/happyfruits/products/azenka_rasmxe.jpg"
             }
         ],
         "category": "Plum",
@@ -57,8 +57,8 @@
         "ratings": 4.9,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/bergeron_xyprul",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131890/happyfruits/products/bergeron_xyprul.jpg"
             }
         ],
         "category": "Apricot",
@@ -74,8 +74,8 @@
         "ratings": 4.9,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/breburn_cklb25",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131890/happyfruits/products/breburn_cklb25.jpg"
             }
         ],
         "category": "Apple",
@@ -91,8 +91,8 @@
         "ratings": 4.7,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/budimka_vbbb4l",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131890/happyfruits/products/budimka_vbbb4l.jpg"
             }
         ],
         "category": "Apple",
@@ -108,8 +108,8 @@
         "ratings": 4.7,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/butira_cxhgoq",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131891/happyfruits/products/butira_cxhgoq.jpg"
             }
         ],
         "category": "Pear",
@@ -125,8 +125,8 @@
         "ratings": 4.9,
         "images": [
             {
-                "public_id": "products/",
-                "url": "https://res.cloudinary.com/.jpg"
+                "public_id": "products/cacanska_rana_nvakdx",
+                "url": "https://res.cloudinary.com/dpv5tcps3/image/upload/v1683131891/happyfruits/products/cacanska_rana_nvakdx.jpg"
             }
         ],
         "category": "Plum",
