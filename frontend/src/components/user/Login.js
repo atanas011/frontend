@@ -70,7 +70,7 @@ const Login = () => {
                                     />
                                 </div>
 
-                                <Link to="/password/reset" className="float-right mb-4">Forgot Password?</Link>
+                                <Link to="/password/reset" className="float-right mb-4">Forgotten Password?</Link>
 
                                 <button
                                     id="login_button"

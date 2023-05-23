@@ -63,7 +63,7 @@ const Header = () => {
                                     <Link className="dropdown-item" to="/orders/user">Orders</Link> :
                                     <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                 }
-                                <Link className="dropdown-item" to="/user">Profile</Link>
+                                <Link className="dropdown-item" to="/profile">Profile</Link>
                                 <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>Logout</Link>
                             </div>
                         </div> :

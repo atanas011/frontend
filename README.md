@@ -1,9 +1,9 @@
 ### e-commerce
 
-NodeJS should be installed and added to System vars.  
-Redux DevTools extension should be added to browser.
+NodeJS should be installed and added to System vars.
 
 - Clone repo to local dir, open cmd.exe in it, and run (backend server): npm i && npm run prod
 - In another cmd.exe run (frontend server): cd frontend && npm i && npm start
-- In browser, Register/Login/Logout, and run Redux DevTools > Actions > State
-- In DevTools > Application > Storage > Cookies, token should (dis)appear
+- In browser:
+  - go to user profile and update it/password
+  - go to Forgot Password > send email > copy token from mailtrap.io > paste it after "http://localhost:4000/password/reset/" in the address bar > Enter

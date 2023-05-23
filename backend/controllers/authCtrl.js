@@ -1,13 +1,14 @@
-import User from '../models/user.js'
-import { ErrorHandler } from '../utils/errorHandler.js'
-import catchAsyncErrs from '../middleware/catchAsyncErrs.js'
-import { sendToken } from '../utils/jwtToken.js'
-import { sendEmail } from '../utils/sendEmail.js'
 import crypto from 'crypto'
 import cloudinary from 'cloudinary'
 
+import User from '../models/user.js'
+import catchAsyncErrs from '../middleware/catchAsyncErrs.js'
+import { ErrorHandler } from '../utils/errorHandler.js'
+import { sendToken } from '../utils/jwtToken.js'
+import { sendEmail } from '../utils/sendEmail.js'
+
 export const register = catchAsyncErrs(async (req, res, next) => {
-    
+
     const avatar = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: 'happyfruits/avatars',
         width: 150,
@@ -78,7 +79,23 @@ export const updateProfile = catchAsyncErrs(async (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
     }
-    // Update avatar: TODO
+
+    // Update avatar
+    if (req.body.avatar !== '') {
+        const user = await User.findById(req.user.id)
+        const img_id = user.avatar.public_id
+        const res = await cloudinary.v2.uploader.destroy(img_id)
+        const avatar = await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: 'happyfruits/avatars',
+            width: 150,
+            crop: 'scale'
+        })
+
+        newUserData.avatar = {
+            public_id: avatar.public_id,
+            url: avatar.secure_url
+        }
+    }
 
     const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
         new: true,
@@ -105,28 +122,32 @@ export const logout = catchAsyncErrs(async (req, res, next) => {
 
 export const forgottenPasswordEmail = catchAsyncErrs(async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email })
+
     if (!user) {
         return next(new ErrorHandler('User with this email not found', 404))
     }
+
     const resetToken = user.getResetPasswordToken()
     // Token is also saved in DB
     await user.save({ validateBeforeSave: false })
 
     // Create reset password url
-    const resetUrl = `${req.protocol}://${req.get('host')}/password/reset/${resetToken}`
-
+    const resetUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`
     const message = `Your password reset token is:\n\n${resetUrl}\n\nIf you did not request this email, please ignore it.`
 
     try {
+
         await sendEmail({
             email: user.email,
             subject: 'Password reset token',
             message
         })
+        
         res.status(200).json({
             success: true,
             message: `Email sent to: ${user.email}`
         })
+
     } catch (err) {
         user.resetPasswordToken = undefined
         user.resetPasswordExpire = undefined
@@ -161,6 +182,7 @@ export const resetPassword = catchAsyncErrs(async (req, res, next) => {
 
 export const getAllUsers = catchAsyncErrs(async (req, res, next) => {
     const users = await User.find()
+    
     res.status(200).json({
         success: true,
         users
