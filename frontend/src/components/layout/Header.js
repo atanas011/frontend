@@ -60,18 +60,16 @@ const Header = () => {
                             </Link>
 
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                {user && user.role !== 'Admin' ?
-                                    <Link className="dropdown-item" to="/orders/user">Orders</Link> :
+                                {user && user.role === 'Admin' &&
                                     <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
                                 }
+                                <Link className="dropdown-item" to="/orders/user">Orders</Link>
                                 <Link className="dropdown-item" to="/profile">Profile</Link>
                                 <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}>Logout</Link>
                             </div>
                         </div> :
                         !loading && <Link to="/login" className="btn ml-4" id="login_btn">Login</Link>
                     }
-
-                    {/* <Link to="/login" className="btn ml-4" id="login_btn">Login</Link> */}
                 </div>
             </nav>
         </Fragment>

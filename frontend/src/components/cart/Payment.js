@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 import axios from 'axios'
 import {
@@ -14,6 +14,8 @@ import {
 import MetaData from '../layout/MetaData'
 
 import Checkout from './Checkout'
+
+import { createOrder, clearErrors } from '../../actions/order'
 
 const options = {
     style: {
@@ -29,22 +31,42 @@ const options = {
 const Payment = () => {
 
     const alert = useAlert()
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const elements = useElements()
     const navigate = useNavigate()
     const stripe = useStripe()
 
     const { user } = useSelector(state => state.auth)
-    // const { cartItems, shippingInfo } = useSelector(state => state.cart)
+    const { cartItems, shippingInfo } = useSelector(state => state.cart)
+    const { error } = useSelector(state => state.newOrder)
 
     useEffect(() => {
 
-    }, [])
+        if (error) {
+            alert.error(error)
+            dispatch(clearErrors())
+        }
+
+    }, [dispatch, navigate, alert, error])
+
+    const order = {
+        orderItems: cartItems,
+        shippingInfo
+    }
 
     const orderInfo = JSON.parse(sessionStorage.getItem('orderInfo'))
+
+    if (orderInfo) {
+        order.itemsPrice = orderInfo.itemsPrice
+        order.shippingPrice = orderInfo.shippingPrice
+        order.taxPrice = orderInfo.taxPrice
+        order.totalPrice = orderInfo.totalPrice
+    }
+
     const paymentData = { // in cents
         amount: Math.round(orderInfo.totalPrice * 100)
     }
+
     const submitHandler = async e => {
         e.preventDefault()
         document.querySelector('#pay_btn').disabled = true
@@ -77,6 +99,13 @@ const Payment = () => {
                 document.querySelector('#pay_btn').disabled = false
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
+                    order.paymentInfo = {
+                        id: result.paymentIntent.id,
+                        status: result.paymentIntent.status
+                    }
+
+                    dispatch(createOrder(order))
+
                     navigate('/success')
                 } else {
                     alert.error('There was some issue while payment processing')

@@ -30,6 +30,10 @@ import Shipping from './components/cart/Shipping'
 import ConfirmOrder from './components/cart/ConfirmOrder'
 import Payment from './components/cart/Payment'
 
+import OrderSuccess from './components/cart/OrderSuccess'
+import ListOrders from './components/order/ListOrders'
+import OrderDetails from './components/order/OrderDetails'
+
 import './App.css'
 
 export default function App() {
@@ -75,6 +79,10 @@ export default function App() {
                   element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>}
                 />
               }
+              <Route path="success" element={<OrderSuccess />} />
+
+              <Route path="orders/user" element={<ListOrders />} />
+              <Route path="order/:id" element={<OrderDetails />} />
             </Route>
 
             <Route path="cart" element={<Cart />} />
