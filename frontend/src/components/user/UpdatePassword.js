@@ -29,9 +29,7 @@ const UpdatePassword = () => {
         if (isUpdated) {
             alert.success('Password updated successfully.')
             navigate('/profile')
-            dispatch({
-                type: UPDATE_PASSWORD_RESET
-            })
+            dispatch({ type: UPDATE_PASSWORD_RESET })
         }
 
     }, [dispatch, navigate, isUpdated, error, alert])

@@ -40,9 +40,7 @@ const UpdateProfile = () => {
             dispatch(loadUser())
             navigate('/profile')
 
-            dispatch({
-                type: UPDATE_PROFILE_RESET
-            })
+            dispatch({ type: UPDATE_PROFILE_RESET })
         }
 
     }, [dispatch, navigate, user, isUpdated, error, alert])
