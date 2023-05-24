@@ -1,5 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import axios from 'axios'
 
 import { loadUser } from './actions/user'
 
@@ -25,13 +28,24 @@ import ResetPassword from './components/user/ResetPassword'
 import Cart from './components/cart/Cart'
 import Shipping from './components/cart/Shipping'
 import ConfirmOrder from './components/cart/ConfirmOrder'
+import Payment from './components/cart/Payment'
 
 import './App.css'
 
 export default function App() {
 
+  const [stripeApiKey, setStripeApiKey] = useState('')
+
   useEffect(() => {
+
     store.dispatch(loadUser())
+
+    async function getStripeApikey() {
+      const { data } = await axios.get('/stripeapi')
+      setStripeApiKey(data.stripeApiKey)
+    }
+
+    getStripeApikey()
   }, [])
 
   return (
@@ -56,6 +70,11 @@ export default function App() {
 
               <Route path="shipping" element={<Shipping />} />
               <Route path="order/confirm" element={<ConfirmOrder />} />
+              {stripeApiKey &&
+                <Route path="payment"
+                  element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>}
+                />
+              }
             </Route>
 
             <Route path="cart" element={<Cart />} />

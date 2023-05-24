@@ -2,6 +2,7 @@ import express from 'express'
 import { auth } from './routes/auth.js'
 import { order } from './routes/order.js'
 import { product } from './routes/product.js'
+import { payment } from './routes/payment.js'
 import errorMiddleware from './middleware/errors.js'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
@@ -17,5 +18,6 @@ app.use(fileUpload())
 app.use('/', auth)
 app.use('/', order)
 app.use('/', product)
+app.use('/', payment)
 
 app.use(errorMiddleware) // this has to be last
