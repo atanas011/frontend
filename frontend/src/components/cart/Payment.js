@@ -70,7 +70,6 @@ const Payment = () => {
     const submitHandler = async e => {
         e.preventDefault()
         document.querySelector('#pay_btn').disabled = true
-        let res
         try {
 
             const config = {
@@ -79,7 +78,7 @@ const Payment = () => {
                 }
             }
 
-            res = await axios.post('/payment/process', paymentData, config)
+            let res = await axios.post('/payment/process', paymentData, config)
             const clientSecret = res.data.client_secret
 
             if (!stripe || !elements) return

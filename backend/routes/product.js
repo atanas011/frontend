@@ -3,6 +3,7 @@ import {
     getProducts,
     newProduct,
     getProductById,
+    getAdminProducts,
     updateProduct,
     deleteProduct,
     createReview,
@@ -15,6 +16,7 @@ export const product = express.Router()
 
 product.get('/products', getProducts)
 product.get('/product/:id', getProductById)
+product.get('/admin/products', getAdminProducts)
 product.post('/admin/product/new', isAuthenticatedUser, authorizeRoles('Admin'), newProduct)
 product.put('/admin/product/:id', isAuthenticatedUser, authorizeRoles('Admin'), updateProduct)
 product.delete('/admin/product/:id', isAuthenticatedUser, authorizeRoles('Admin'), deleteProduct)

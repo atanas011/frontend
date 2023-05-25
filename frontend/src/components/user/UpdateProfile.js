@@ -114,16 +114,16 @@ const UpdateProfile = () => {
                                         />
                                     </figure>
                                 </div>
-                                <div className="custom-file">
+                                <div className="mb-3">
                                     <input
                                         type="file"
                                         name="avatar"
-                                        className="custom-file-input"
-                                        id="customFile"
+                                        className="form-control"
+                                        id="formFile"
                                         accept="images/*"
                                         onChange={onChange}
                                     />
-                                    <label className="custom-file-label" htmlFor="customFile">
+                                    <label className="custom-file-label" htmlFor="formFile">
                                         Choose Avatar
                                     </label>
                                 </div>

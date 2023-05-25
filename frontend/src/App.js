@@ -34,6 +34,16 @@ import OrderSuccess from './components/cart/OrderSuccess'
 import ListOrders from './components/order/ListOrders'
 import OrderDetails from './components/order/OrderDetails'
 
+import Dashboard from './components/admin/Dashboard'
+import ProductList from './components/admin/ProductList'
+import NewProduct from './components/admin/NewProduct'
+import UpdateProduct from './components/admin/UpdateProduct'
+import OrderList from './components/admin/OrderList'
+import ProcessOrder from './components/admin/ProcessOrder'
+import UserList from './components/admin/UserList'
+import UpdateUser from './components/admin/UpdateUser'
+import Reviews from './components/admin/Reviews'
+
 import './App.css'
 
 export default function App() {
@@ -44,12 +54,17 @@ export default function App() {
 
     store.dispatch(loadUser())
 
-    async function getStripeApikey() {
-      const { data } = await axios.get('/stripeapi')
-      setStripeApiKey(data.stripeApiKey)
+    async function getStripeApiKey() {
+      try { // !!!
+        const { data } = await axios.get('/stripeapi')
+        setStripeApiKey(data.stripeApiKey)
+      } catch (err) {
+        console.log(err.response.data)
+      }
     }
 
-    getStripeApikey()
+    getStripeApiKey()
+
   }, [])
 
   return (
@@ -67,6 +82,8 @@ export default function App() {
             <Route path="password/reset" element={<ForgottenPassword />} />
             <Route path="password/reset/:token" element={<ResetPassword />} />
 
+            <Route path="cart" element={<Cart />} />
+
             <Route element={<Protected />}>
               <Route path="profile" element={<Profile />} />
               <Route path="profile/update" element={<UpdateProfile />} />
@@ -83,9 +100,17 @@ export default function App() {
 
               <Route path="orders/user" element={<ListOrders />} />
               <Route path="order/:id" element={<OrderDetails />} />
-            </Route>
 
-            <Route path="cart" element={<Cart />} />
+              <Route path="dashboard" element={<Dashboard />} isAdmin />
+              <Route path="admin/products" element={<ProductList />} isAdmin />
+              <Route path="admin/product" element={<NewProduct />} isAdmin />
+              <Route path="admin/product/:id" element={<UpdateProduct />} isAdmin />
+              <Route path="admin/orders" element={<OrderList />} isAdmin />
+              <Route path="admin/order/:id" element={<ProcessOrder />} isAdmin />
+              <Route path="admin/users" element={<UserList />} isAdmin />
+              <Route path="admin/user/:id" element={<UpdateUser />} isAdmin />
+              <Route path="admin/reviews" element={<Reviews />} isAdmin />
+            </Route>
           </Routes>
         </div>
         <Footer />

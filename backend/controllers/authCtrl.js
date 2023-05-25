@@ -84,7 +84,7 @@ export const updateProfile = catchAsyncErrs(async (req, res, next) => {
     if (req.body.avatar !== '') {
         const user = await User.findById(req.user.id)
         const img_id = user.avatar.public_id
-        const res = await cloudinary.v2.uploader.destroy(img_id)
+        await cloudinary.v2.uploader.destroy(img_id)
         const avatar = await cloudinary.v2.uploader.upload(req.body.avatar, {
             folder: 'happyfruits/avatars',
             width: 150,
@@ -227,7 +227,9 @@ export const deleteUser = catchAsyncErrs(async (req, res, next) => {
         return next(new ErrorHandler('User not found'))
     }
 
-    // Remove avatar from cloudinary: TODO
+    // Remove avatar from cloudinary
+    const img_id = user.avatar.public_id
+    await cloudinary.v2.uploader.destroy(img_id)
 
     await user.deleteOne()
 
